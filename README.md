@@ -16,7 +16,6 @@ Good to know : This project is  a technical test for the Lucca company !
 
 ## Installation 
 
- 
 
 ### Prerequisites
 
@@ -53,6 +52,10 @@ be transmitted.
 #### The following N lines contain:
 - A representation the exchange rates
 
+### To improve on this project with more time
+
+- The management of decimal numbers can be smarter
+- The management of the UI display can be abstract using a Validity class to manage the display of the result or the error message.
 
 ### Usage
 
@@ -61,9 +64,8 @@ According to the prerequisites you need to put an input text path file in argume
  - Add this in the command line as following
  - Add this in the console UI when the program is running and ask you to add.
 
-You can clone this project and launch it
-(no release available yet)
-
+You can clone this project and launch it 
+You can also download the release folder.
 
 ## Versions
 

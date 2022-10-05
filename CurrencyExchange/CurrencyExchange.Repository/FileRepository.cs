@@ -1,5 +1,7 @@
+using CurrencyExchange.Repository.helper;
 using CurrencyExchange.UI.consoleUI;
 using CurrencyExchange.UI.constant;
+using FileParser;
 
 namespace CurrencyExchange.Repository;
 
@@ -63,6 +65,7 @@ public class FileRepository : IFileRepository
 
     private static CurrencyDto MapDeviceToConvert(string[] subs)
     {
+        FileHelper.CheckValidityOfFileValues(subs);
         return new CurrencyDto
         {
             FromCurrency = subs[0],
@@ -73,6 +76,7 @@ public class FileRepository : IFileRepository
 
     private static ExchangeRateInfoDto MapConversionInfo(string[] subs)
     {
+        FileHelper.CheckValidityOfFileValues(subs);
         return new ExchangeRateInfoDto
         {
             BaseCurrency = subs[0],
@@ -80,4 +84,6 @@ public class FileRepository : IFileRepository
             TargetCurrency = subs[1]
         };
     }
+
+
 }
