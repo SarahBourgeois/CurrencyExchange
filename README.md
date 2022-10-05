@@ -55,7 +55,9 @@ be transmitted.
 ### To improve on this project with more time
 
 - The management of decimal numbers can be smarter
-- The management of the UI display can be abstract using a Validity class to manage the display of the result or the error message.
+- The management of the UI display can be abstract using a Validity class to manage the display of the result or the error message. Can be usefull if we want to add a new UI manager or convert into API and have no dependancy.
+- Can do a Misconception to manage the specific Console specificy
+- [Very interesting article](https://itnext.io/how-to-fully-cover-net-c-console-application-with-unit-tests-446927a4a793) for the unit test of the console application.
 
 ### Usage
 
@@ -64,7 +66,7 @@ According to the prerequisites you need to put an input text path file in argume
  - Add this in the command line as following
  - Add this in the console UI when the program is running and ask you to add.
 
-You can clone this project and launch it 
+You can clone this project and launch it (visual studio/rider/vscode, commande line etc.)
 You can also download the release folder.
 
 ## Versions
