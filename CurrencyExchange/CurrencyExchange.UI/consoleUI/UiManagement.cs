@@ -5,7 +5,6 @@ using Repository.Abstract.Dto;
 
 public static class UiManagement
 {
-
     /// <summary>
     /// Display the main title of the application
     /// </summary>
@@ -45,5 +44,12 @@ public static class UiManagement
     public static void DisplayResult(int result, CurrencyDto currencyDto)
     {
         Console.WriteLine($"The result of your conversion from {currencyDto.FromCurrency} to {currencyDto.ToCurrency} is : {result} !!! ");
+    }
+
+    public static void QuitApplication()
+    {
+        Console.WriteLine("Process is now finished.");
+        Console.WriteLine("Press any key to quit the application");
+        Console.ReadKey();
     }
 }

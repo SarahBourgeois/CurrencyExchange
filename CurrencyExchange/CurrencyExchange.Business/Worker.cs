@@ -51,7 +51,10 @@ public class Worker : IWorker
 
             UiManagement.DisplayResult(result, currencyDtoToConvert);
 
-            _logger.LogInformation("ProcessConversion finished");
+            _logger.LogDebug("ProcessConversion finished");
+            
+            UiManagement.QuitApplication();
+            
         }
         catch (Exception e)
         {
