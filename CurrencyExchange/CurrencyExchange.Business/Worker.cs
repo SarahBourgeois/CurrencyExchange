@@ -23,18 +23,24 @@ public class Worker : IWorker
 
     public async Task RunAsync(string[] args)
     {
+        _logger.LogInformation("ProcessConversion started");
+
+        UiManagement.DisplayGreetingTitle();
+        
         try
         {
             if (args.Length is 0 or > 1)
+                args = new[]
+                {
+                    UiManagement.PushUserFiles() ?? // ask for input file
+                    throw new Exception()
+                };
+            
+            if (args.Length is 0 or > 1)
             {
-                _logger.LogCritical("Invalid number of arguments.");
                 UiManagement.DisplayErrors(ErrorMessage.ArgumentException);
                 throw new Exception();
             }
-
-            _logger.LogInformation("ProcessConversion started");
-
-            UiManagement.DisplayGreetingTitle();
 
             Dictionary<CurrencyDto, List<ExchangeRateInfoDto>> parsedExchangeRateData =
                 await _fileRepository.ParseFileAsync(args[0]);

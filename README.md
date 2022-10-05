@@ -1,4 +1,4 @@
-# CurrencyExchange 
+# CurrencyExchange for Lucca Company
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/not-a-bug-a-feature.svg)](https://forthebadge.com)
 
@@ -24,6 +24,7 @@ You need to have :
 - a text file input to send in argument.
 This file contains the currency exchange rates, and what you need to convert in this following format :
 
+Example : 
 ```txt
 EUR;550;JPY
 6
@@ -53,43 +54,26 @@ be transmitted.
 - A representation the exchange rates
 
 
+### Usage
 
-### Installation
+According to the prerequisites you need to put an input text path file in argument.
+2 ways to do it :
+ - Add this in the command line as following
+ - Add this in the console UI when the program is running and ask you to add.
 
-
-Les étapes pour installer votre programme....
-
-Dites ce qu'il faut faire...
-
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
-
-
-Ensuite vous pouvez montrer ce que vous obtenez au final...
-
-
-
+You can clone this project and launch it
+(no release available yet)
 
 
 ## Versions
-Listez les versions ici
-_exemple :_
-**Dernière version stable :** 5.0
-**Dernière version :** 5.1
-Liste des versions : [Cliquer pour afficher](https://github.com/your/project-name/tags)
-_(pour le lien mettez simplement l'URL de votre projets suivi de ``/tags``)_
 
-## Auteurs
-Listez le(s) auteur(s) du projet ici !
-* **Jhon doe** _alias_ [@outout14](https://github.com/outout14)
+**latest :**  1.0
 
-Lisez la liste des [contributeurs](https://github.com/your/project/contributors) pour voir qui à aidé au projet !
-
-_(pour le lien mettez simplement l'URL de votre projet suivi de ``/contirubors``)_
+List of all versions : [Click here to display](https://github.com/SarahBourgeois/CurrencyExchange/tags)
 
 ## License
 
-Ce projet est sous licence ``exemple: WTFTPL`` - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
-
+License MIT
 
 
 

@@ -46,9 +46,12 @@ public static class UiManagement
         Console.WriteLine($"The result of your conversion from {currencyDto.FromCurrency} to {currencyDto.ToCurrency} is : {result} !!! ");
     }
 
-    public static void DisplayErrors(string error)
+    public static void DisplayErrors(string error) => Console.WriteLine(error);
+
+    public static string? PushUserFiles()
     {
-        Console.WriteLine(error);
+        Console.WriteLine(Display.InputFileText);
+        return Console.ReadLine();
     }
 
     public static void QuitApplication()

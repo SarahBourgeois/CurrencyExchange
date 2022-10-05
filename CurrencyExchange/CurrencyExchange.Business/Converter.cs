@@ -14,7 +14,7 @@ public class Converter : IConverter
     public Converter(ILogger<IConverter> logger) =>_logger = logger;
 
     private static decimal _amount;
-    private Dictionary<string, List<string>> _graph;
+    private Dictionary<string?, List<string?>> _graph;
 
     /// <summary>
     /// Build graph for all rates
@@ -25,14 +25,14 @@ public class Converter : IConverter
         if (_graph != null)
             return;
 
-        _graph = new Dictionary<string, List<string>>();
+        _graph = new Dictionary<string?, List<string?>>();
 
         foreach (var rate in exchangeRateList.Where(rate => rate.BaseCurrency != null && rate.TargetCurrency != null))
         {
             if (!_graph.ContainsKey(rate.BaseCurrency))
-                _graph[rate.BaseCurrency] = new List<string>();
+                _graph[rate.BaseCurrency] = new List<string?>();
             if (!_graph.ContainsKey(rate.TargetCurrency))
-                _graph[rate.TargetCurrency] = new List<string>();
+                _graph[rate.TargetCurrency] = new List<string?>();
 
             _graph[rate.BaseCurrency].Add(rate.TargetCurrency);
             _graph[rate.TargetCurrency].Add(rate.BaseCurrency);
@@ -70,7 +70,7 @@ public class Converter : IConverter
         var rateInvert = exhangeRateList.SingleOrDefault(r => r.BaseCurrency == targetCode && r.TargetCurrency == baseCode);
 
         if (rate == null)
-            return _amount *= (1 / rateInvert.ExchangeRate);
+            return _amount *= (1 / rateInvert!.ExchangeRate);
         
         return _amount *= rate.ExchangeRate;
     }
@@ -78,24 +78,24 @@ public class Converter : IConverter
     public async Task<int> ConvertCurrencyExchangeAsync(CurrencyDto? initialData, List<ExchangeRateInfoDto> exchangeRateList)
     {
         try {
-        _logger.LogDebug("Currency conversion started");
+            _logger.LogDebug("Currency conversion started");
 
-        if (initialData == null)
-        {
-            _logger.LogError("Initial data is null");
-            throw new ArgumentNullException(nameof(initialData));
-        }
+            if (initialData == null)
+            {
+                _logger.LogError("Initial data is null");
+                throw new ArgumentNullException(nameof(initialData));
+            }
 
-        _amount = initialData.Amount;
-        var baseCode = initialData.FromCurrency;
-        var targetCode = initialData.ToCurrency;
+            _amount = initialData.Amount;
+            var baseCode = initialData.FromCurrency;
+            var targetCode = initialData.ToCurrency;
 
-        ConstructGraph(exchangeRateList);
-        Rate(baseCode, targetCode, exchangeRateList);
+            ConstructGraph(exchangeRateList);
+            Rate(baseCode, targetCode, exchangeRateList);
 
-        _logger.LogDebug("Currency conversion finished");
+            _logger.LogDebug("Currency conversion finished");
 
-        return (int)Math.Floor(_amount);
+            return (int)Math.Floor(_amount);
         }
         catch (Exception ex)
         {
@@ -104,5 +104,4 @@ public class Converter : IConverter
             throw;
         }
     }
-
 }
