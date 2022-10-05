@@ -50,29 +50,28 @@ public class Converter : IConverter
     {
         if (_graph[baseCode].Contains(targetCode))
         {
-            return GetKnownRate(baseCode, targetCode, exhangeRateList);
+            return GetRelevantRate(baseCode, targetCode, exhangeRateList);
         }
         // check if the can is convertible to the target
         foreach (var code in _graph[baseCode])
         {
-
             var rate = Rate(code, targetCode, exhangeRateList);
             if (rate != 0) // combine with returned rate
-                return rate * GetKnownRate(baseCode, code, exhangeRateList);
-
+                return rate * GetRelevantRate(baseCode, code, exhangeRateList);
         }
 
         return 0; // the baseCurrency is not convertible to the targetCurrency
     }
-    public decimal GetKnownRate(string? baseCode, string? targetCode, List<ExchangeRateInfoDto> exhangeRateList)
+    
+    
+    public decimal GetRelevantRate(string? baseCode, string? targetCode, List<ExchangeRateInfoDto> exhangeRateList)
     {
-        var rate = exhangeRateList.SingleOrDefault(fr => fr.BaseCurrency == baseCode && fr.TargetCurrency == targetCode);
-        var rate_invert = exhangeRateList.SingleOrDefault(fr => fr.BaseCurrency == targetCode && fr.TargetCurrency == baseCode);
+        var rate = exhangeRateList.SingleOrDefault(r => r.BaseCurrency == baseCode && r.TargetCurrency == targetCode);
+        var rateInvert = exhangeRateList.SingleOrDefault(r => r.BaseCurrency == targetCode && r.TargetCurrency == baseCode);
 
         if (rate == null)
-        {
-            return _amount *= (1 / rate_invert.ExchangeRate);
-        }
+            return _amount *= (1 / rateInvert.ExchangeRate);
+        
         return _amount *= rate.ExchangeRate;
     }
 
