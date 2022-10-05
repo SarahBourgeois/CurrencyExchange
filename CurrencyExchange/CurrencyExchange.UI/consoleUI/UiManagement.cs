@@ -46,6 +46,11 @@ public static class UiManagement
         Console.WriteLine($"The result of your conversion from {currencyDto.FromCurrency} to {currencyDto.ToCurrency} is : {result} !!! ");
     }
 
+    public static void DisplayErrors(string error)
+    {
+        Console.WriteLine(error);
+    }
+
     public static void QuitApplication()
     {
         Console.WriteLine("Process is now finished.");

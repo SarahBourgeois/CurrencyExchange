@@ -1,3 +1,6 @@
+using CurrencyExchange.UI.consoleUI;
+using CurrencyExchange.UI.constant;
+
 namespace CurrencyExchange.Repository;
 
 using Abstract;
@@ -19,11 +22,12 @@ public class FileRepository : IFileRepository
     /// <exception cref="ParsingException"></exception>
     public Task<Dictionary<CurrencyDto, List<ExchangeRateInfoDto>>> ParseFileAsync(string filePath)
     {
-        _logger.LogDebug("process to parse file", filePath);
+        _logger.LogDebug("process to parse file is running");
 
         if (!File.Exists(filePath))
         {
             _logger.LogCritical("File not found", filePath);
+            UiManagement.DisplayErrors(ErrorMessage.FileException);
             throw new FileNotFoundException();
         }
 
@@ -50,6 +54,7 @@ public class FileRepository : IFileRepository
         catch (Exception e)
         {
             _logger.LogCritical("Error while parsing file", e);
+            UiManagement.DisplayErrors(ErrorMessage.FileException);
             throw new FileLoadException();
         }
     }

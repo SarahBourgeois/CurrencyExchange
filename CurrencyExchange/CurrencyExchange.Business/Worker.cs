@@ -1,3 +1,5 @@
+using CurrencyExchange.UI.constant;
+
 namespace CurrencyExchange.Business;
 
 using Abstract;
@@ -26,6 +28,7 @@ public class Worker : IWorker
             if (args.Length is 0 or > 1)
             {
                 _logger.LogCritical("Invalid number of arguments.");
+                UiManagement.DisplayErrors(ErrorMessage.ArgumentException);
                 throw new Exception();
             }
 
@@ -42,6 +45,7 @@ public class Worker : IWorker
             if (currencyDtoToConvert is null || exchangeRateList is null)
             {
                 _logger.LogCritical("Invalid input data");
+                UiManagement.DisplayErrors(ErrorMessage.InvalidInputData);
                 throw new Exception();
             }
 
@@ -54,11 +58,11 @@ public class Worker : IWorker
             _logger.LogDebug("ProcessConversion finished");
             
             UiManagement.QuitApplication();
-            
         }
         catch (Exception e)
         {
             _logger.LogCritical(e, "ProcessConversion failed");
+            UiManagement.DisplayErrors(ErrorMessage.ProcessConversionFailed);
             throw new Exception();
         }
     }

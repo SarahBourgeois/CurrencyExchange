@@ -1,3 +1,6 @@
+using CurrencyExchange.UI.consoleUI;
+using CurrencyExchange.UI.constant;
+
 namespace CurrencyExchange.Business;
 
 using Abstract;
@@ -8,10 +11,7 @@ public class Converter : IConverter
 {
     private readonly ILogger<IConverter> _logger;
 
-    public Converter(ILogger<IConverter> logger)
-    {
-        _logger = logger;
-    }
+    public Converter(ILogger<IConverter> logger) =>_logger = logger;
 
     private static decimal _amount;
     private Dictionary<string, List<string>> _graph;
@@ -77,6 +77,9 @@ public class Converter : IConverter
 
     public async Task<int> ConvertCurrencyExchangeAsync(CurrencyDto? initialData, List<ExchangeRateInfoDto> exchangeRateList)
     {
+        try {
+        _logger.LogDebug("Currency conversion started");
+
         if (initialData == null)
         {
             _logger.LogError("Initial data is null");
@@ -90,8 +93,16 @@ public class Converter : IConverter
         ConstructGraph(exchangeRateList);
         Rate(baseCode, targetCode, exchangeRateList);
 
+        _logger.LogDebug("Currency conversion finished");
 
         return (int)Math.Floor(_amount);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex.Message);
+            UiManagement.DisplayErrors(ErrorMessage.ConvertCurrencyError);
+            throw;
+        }
     }
 
 }

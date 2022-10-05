@@ -15,6 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CurrencyExchange.Repository.Abstract\CurrencyExchange.Repository.Abstract.csproj" />
+      <ProjectReference Include="..\CurrencyExchange.UI\CurrencyExchange.UI.csproj" />
     </ItemGroup>
 
 </Project>
