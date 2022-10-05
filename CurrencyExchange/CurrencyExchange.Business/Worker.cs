@@ -30,7 +30,7 @@ public class Worker : IWorker
         try
         {
             if (args.Length is 0 or > 1)
-                args = new[]
+                args = new[] 
                 {
                     UiManagement.PushUserFiles() ?? // ask for input file
                     throw new Exception()
