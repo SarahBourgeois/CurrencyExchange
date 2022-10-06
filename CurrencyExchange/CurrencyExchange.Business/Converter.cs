@@ -62,6 +62,13 @@ public class Converter : IConverter
         return 0; // the baseCurrency is not convertible to the targetCurrency
     }
     
+    /// <summary>
+    /// Get relevant rate from the list
+    /// </summary>
+    /// <param name="baseCode"></param>
+    /// <param name="targetCode"></param>
+    /// <param name="exhangeRateList"></param>
+    /// <returns></returns>
     public decimal GetRelevantRate(string? baseCode, string? targetCode, List<ExchangeRateInfoDto> exhangeRateList)
     {
         var rate = exhangeRateList.SingleOrDefault(r => r.BaseCurrency == baseCode && r.TargetCurrency == targetCode);
@@ -73,6 +80,13 @@ public class Converter : IConverter
         return _amount *= rate.ExchangeRate;
     }
 
+    /// <summary>
+    /// Main method to convert currency from one to another 
+    /// </summary>
+    /// <param name="initialData"></param>
+    /// <param name="exchangeRateList"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
     public async Task<int> ConvertCurrencyExchangeAsync(CurrencyDto? initialData, List<ExchangeRateInfoDto> exchangeRateList)
     {
         try {

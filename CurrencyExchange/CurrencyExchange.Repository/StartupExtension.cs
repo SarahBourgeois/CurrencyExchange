@@ -1,7 +1,7 @@
 namespace CurrencyExchange.Repository;
 
 using System.Diagnostics.CodeAnalysis;
-using CurrencyExchange.Repository.Abstract;
+using Abstract;
 using Microsoft.Extensions.DependencyInjection;
 
 [ExcludeFromCodeCoverage]

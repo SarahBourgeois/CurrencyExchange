@@ -4,5 +4,5 @@ using CurrencyExchange.Repository.Abstract.Dto;
 
 public interface IConverter
 {
-    Task<int> ConvertCurrencyExchangeAsync(CurrencyDto? initalData, List<ExchangeRateInfoDto> exchangeRateList);
+    Task<int> ConvertCurrencyExchangeAsync(CurrencyDto? initialData, List<ExchangeRateInfoDto> exchangeRateList);
 }

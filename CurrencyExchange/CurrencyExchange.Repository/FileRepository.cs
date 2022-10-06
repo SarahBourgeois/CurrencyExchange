@@ -1,10 +1,9 @@
-using CurrencyExchange.Repository.helper;
-using CurrencyExchange.UI.consoleUI;
-using CurrencyExchange.UI.constant;
-using FileParser;
-
 namespace CurrencyExchange.Repository;
 
+using helper;
+using UI.consoleUI;
+using UI.constant;
+using FileParser;
 using Abstract;
 using Abstract.Dto;
 using Microsoft.Extensions.Logging;
