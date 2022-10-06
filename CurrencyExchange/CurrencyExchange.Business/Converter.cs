@@ -1,8 +1,7 @@
-using CurrencyExchange.UI.consoleUI;
-using CurrencyExchange.UI.constant;
-
 namespace CurrencyExchange.Business;
 
+using UI.consoleUI;
+using UI.constant;
 using Abstract;
 using CurrencyExchange.Repository.Abstract.Dto;
 using Microsoft.Extensions.Logging;
@@ -62,7 +61,6 @@ public class Converter : IConverter
 
         return 0; // the baseCurrency is not convertible to the targetCurrency
     }
-    
     
     public decimal GetRelevantRate(string? baseCode, string? targetCode, List<ExchangeRateInfoDto> exhangeRateList)
     {
