@@ -1,3 +1,5 @@
+using CurrencyExchange.Business.helper;
+
 namespace CurrencyExchange.Business;
 
 using UI.consoleUI;
@@ -8,6 +10,10 @@ using Microsoft.Extensions.Logging;
 
 public class Converter : IConverter
 {
+    // > DFS : Depth First Search better alogrithm to use
+    // https://www.koderdojo.com/blog/depth-first-search-algorithm-in-csharp-and-net-core   
+    // --------------------------------------
+    
     private readonly ILogger<IConverter> _logger;
 
     public Converter(ILogger<IConverter> logger) =>_logger = logger;
@@ -45,7 +51,7 @@ public class Converter : IConverter
     /// <param name="targetCode"></param>
     /// <param name="exhangeRateList"></param>
     /// <returns></returns>
-    private decimal Rate(string? baseCode, string? targetCode, List<ExchangeRateInfoDto> exhangeRateList)
+    private decimal Rate(string baseCode, string targetCode, List<ExchangeRateInfoDto> exhangeRateList)
     {
         if (_graph[baseCode].Contains(targetCode))
         {
@@ -75,9 +81,9 @@ public class Converter : IConverter
         var rateInvert = exhangeRateList.SingleOrDefault(r => r.BaseCurrency == targetCode && r.TargetCurrency == baseCode);
 
         if (rate == null)
-            return _amount *= (1 / rateInvert!.ExchangeRate);
+            return _amount *= ConverterRules.RoundDecimal(1 / rateInvert!.ExchangeRate);
         
-        return _amount *= rate.ExchangeRate;
+        return _amount *= ConverterRules.RoundDecimal(rate.ExchangeRate);
     }
 
     /// <summary>
@@ -107,7 +113,7 @@ public class Converter : IConverter
 
             _logger.LogDebug("Currency conversion finished");
 
-            return (int)Math.Floor(_amount);
+            return ConverterRules.RoundInt(_amount);
         }
         catch (Exception ex)
         {

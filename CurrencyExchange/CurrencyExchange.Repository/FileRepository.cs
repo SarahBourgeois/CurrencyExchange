@@ -29,7 +29,7 @@ public class FileRepository : IFileRepository
         {
             _logger.LogCritical("File not found", filePath);
             UiManagement.DisplayErrors(ErrorMessage.FileException);
-            throw new FileNotFoundException();
+            throw new FileNotFoundException("File not found");
         }
 
         var relevantDeviceDataFromFile = new Dictionary<CurrencyDto, List<ExchangeRateInfoDto>>();
@@ -83,6 +83,4 @@ public class FileRepository : IFileRepository
             TargetCurrency = subs[1]
         };
     }
-
-
 }

@@ -9,6 +9,7 @@ public static class StartupExtension
 {
     public static void AddRepository(this IServiceCollection services)
     {
+        // automapper configuration
         services.AddScoped<IFileRepository, FileRepository>();
     }
 }

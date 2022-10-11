@@ -57,7 +57,7 @@ public class Worker : IWorker
 
             UiManagement.DisplayCurrencyExchangeExcpectation(currencyDtoToConvert);
 
-            var result = await _converter.ConvertCurrencyExchangeAsync(currencyDtoToConvert, exchangeRateList);
+            int result = await _converter.ConvertCurrencyExchangeAsync(currencyDtoToConvert, exchangeRateList);
 
             UiManagement.DisplayResult(result, currencyDtoToConvert);
 
