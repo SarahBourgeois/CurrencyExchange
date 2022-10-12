@@ -1,10 +1,8 @@
-# CurrencyExchange for Lucca Company
+# CurrencyExchange
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/not-a-bug-a-feature.svg)](https://forthebadge.com)
 
 CurrencyExchange is a simple currency converter that allow to convert from one currency to another, optimizing the best possible path to achieve the expected currency conversion 
-
-Good to know : This project is  a technical test for the Lucca company ! 
 
 ## Develop with 
 
@@ -42,6 +40,12 @@ AUD;JPY;86.0305
 EUR;USD;1.2989
 JPY;INR;0.6571
    ```
+   
+```c#
+output : 59033
+```
+
+   
 
 #### The first line contains:
 - The initial currency in which the amount is displayed, as a code of 3
