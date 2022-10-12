@@ -11,14 +11,6 @@ CurrencyExchange is a simple currency converter that allow to convert from one c
 * [Recursion](https://devblogs.microsoft.com/oldnewthing/20180927-00/?p=99835) - Recursive version to find the best path
 * [Dependancy Injection](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) - dependency injection software design pattern,for achieving Inversion of Control.
 
-### To improve on this project with more time
-
-- The management of decimal numbers can be smarter
-- The management of the UI display can be abstract using a Validity class to manage the display of the result or the error message. Can be usefull if we want to add a new UI manager or convert into API and have no dependancy.
-- Can do a Misconception to manage the specific Console specificy
-- [Very interesting article](https://itnext.io/how-to-fully-cover-net-c-console-application-with-unit-tests-446927a4a793) for the unit test of the console application.
-- Do Unit Test (Will push if I've time but need to send that quickly to accelerate process like I say to the recruiter)
-
 
 ## Installation 
 
